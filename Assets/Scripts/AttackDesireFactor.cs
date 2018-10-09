@@ -1,0 +1,79 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AttackDesireFactor : BaseFactor
+{
+    //AI health
+    float hp;
+
+    //AI agressiveness
+    float aggressiveness;
+
+    //min and max damage the player can dish out
+    float minDamage;
+
+    float maxDamage;
+
+    //player health
+    float playerHp;
+
+    override public int GetFactorRank(GameObject aiToCheck)
+    {
+        hp = GetComponent<AI>().CurrentHitpoints;
+
+        aggressiveness = GetComponent<AI>().Aggressiveness;
+
+        minDamage = GetComponent<PlayerManager>().MinAttack;
+
+        maxDamage = GetComponent<PlayerManager>().MaxAttack;
+
+        playerHp = GetComponent<PlayerManager>().CurrentHP;
+
+        //range-bound linear attack-desire curve
+        float inverseRatio = 1 - ((float)(playerHp - minDamage) / (maxDamage - minDamage));
+
+        float calcNum = (inverseRatio * (1 - aggressiveness)) + aggressiveness;
+
+        float score = Math.Max(Math.Min(calcNum, 1), aggressiveness);
+
+        if (score > 0.8)
+        {
+            return 15;
+        }
+
+        if (score > 0.6)
+        {
+            return 10;
+        }
+
+        else
+        {
+            return 5;
+        }
+    }
+
+    override public int GetFactorBonus(GameObject aiToCheck)
+    {
+        //if player is low health, give higher weight
+        if (playerHp < 20)
+        {
+            return 10;
+        }
+
+        return 1;
+    }
+
+    override public int GetFactorMultiplier(GameObject aiToCheck)
+    {
+        //if AI health is low, set weight to 0
+        if (hp < 10)
+        {
+            return 0;
+        }
+
+        return 1;
+    }
+}
+
