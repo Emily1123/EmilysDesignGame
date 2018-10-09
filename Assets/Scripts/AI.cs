@@ -17,6 +17,10 @@ public class AI : MonoBehaviour
 
     public int AttackRange { get; set; }
 
+    public int WanderTime { get; set; }
+
+    public float WanderRadius { get; set; }
+
     public string Name { get; set; }
 
     public bool CanAttack { get; set; }

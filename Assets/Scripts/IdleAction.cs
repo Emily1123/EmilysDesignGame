@@ -29,7 +29,7 @@ public class IdleAction : BaseAction
 
         foreach (var factor in Factors)
         {
-            weight+= factor.GetFactorBonus(aiToCheck) * factor.GetFactorMultiplier(aiToCheck);
+            weight += factor.GetFactorBonus(aiToCheck) * factor.GetFactorMultiplier(aiToCheck);
         }
 
         return weight;
@@ -41,31 +41,40 @@ public class IdleAction : BaseAction
 
         mySettings.CanPerformAction = false;
 
-        float wanderRadius = 0;
+        float wanderRadius = GetComponent<AI>().WanderRadius;
 
-        float wanderTimer = 0;
+        int wanderTimer = GetComponent<AI>().WanderTime;
 
-        float timer = 0;
+        int seconds = 0;
 
-        timer = wanderTimer;
+        seconds = wanderTimer;
 
-        timer += Time.deltaTime;
+        StartCoroutine(TimeBetweenDest(seconds));
 
-        if (timer >= wanderTimer)
+        while (seconds > wanderTimer)
         {
-            Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
+            if (seconds != 0)
+            {
+                Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
 
-            AIManager aiManager = ai.GetComponent<AIManager>();
+                AIManager aiManager = ai.GetComponent<AIManager>();
 
-            aiManager.agent.destination = newPos;
-
-            timer = 0;
+                aiManager.agent.destination = newPos;
+            }
         }
 
         mySettings.CanPerformAction = true;
 
         //Remove this script from its parent
         Destroy(this);
+    }
+
+    IEnumerator TimeBetweenDest(int seconds)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(seconds);
+        }
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
