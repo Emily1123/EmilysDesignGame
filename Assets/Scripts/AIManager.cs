@@ -10,7 +10,7 @@ public class AIManager : MonoBehaviour
 
     public List<BaseAction> Actions;
 
-    public GameObject[] allAI;
+    public List<GameObject> allAI = new List<GameObject>();
 
     public NavMeshAgent agent;
 
@@ -54,8 +54,12 @@ public class AIManager : MonoBehaviour
 
     void Start()
     {
+        GameObject g = GameObject.Find("AI");
+
+        allAI.Add(g);
+
         //call every 3 frames
-        InvokeRepeating("Update", 0f, 180f);
+        InvokeRepeating("UpdateAI", 0f, 180f);
 
         agent = GetComponent<NavMeshAgent>();
 
@@ -72,6 +76,8 @@ public class AIManager : MonoBehaviour
             if (!settings.CanPerformAction)
                 continue;
 
+            Debug.Log("AI for action");
+
             var decisionRank = 0;
 
             var decisionWeight = 0;
@@ -87,6 +93,8 @@ public class AIManager : MonoBehaviour
                 if (curActionWeight <= 0)
                     continue;
 
+                Debug.Log("selecting action");
+
                 if (curActionRank > decisionRank || curActionRank == decisionRank && curActionWeight > decisionWeight)
                 {
                     decisionRank = curActionRank;
@@ -94,11 +102,14 @@ public class AIManager : MonoBehaviour
                     decisionWeight = curActionWeight;
 
                     decision = action.ActionToPerform;
+
+                    Debug.Log("made decision");
                 }
             }
 
             var aiAction = ai.AddComponent(typeof(AIAction));
             //aiAction.Run();
+            Debug.Log("made action");
         }
     }
 }

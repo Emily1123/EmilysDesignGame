@@ -40,6 +40,8 @@ public class BaseAction : MonoBehaviour
             }
         }
 
+        Debug.Log("got final rank");
+
         return _rank;
     }
 
@@ -52,6 +54,9 @@ public class BaseAction : MonoBehaviour
         {
             _weightBonus += factor.GetFactorBonus(aiToCheck) * factor.GetFactorMultiplier(aiToCheck);
         }
+
+        Debug.Log("got final weight");
+
         return _weightBonus;
     }
 
