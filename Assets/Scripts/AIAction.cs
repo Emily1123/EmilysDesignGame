@@ -10,4 +10,9 @@ public class AIAction : MonoBehaviour
     {
         currentDecision = Factors.None;
     }
+
+    public void Run()
+    {
+
+    }
 }

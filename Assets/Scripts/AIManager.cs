@@ -97,9 +97,8 @@ public class AIManager : MonoBehaviour
                 }
             }
 
-            //var aiAction = ai.AddComponent(typeof(decision));
-
-            //aiAction.Run(GameObject ai);
+            var aiAction = ai.AddComponent(typeof(AIAction));
+            //aiAction.Run();
         }
     }
 }
