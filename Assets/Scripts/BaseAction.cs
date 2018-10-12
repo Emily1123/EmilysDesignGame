@@ -19,9 +19,6 @@ public class BaseAction : MonoBehaviour
     //Factors to consider for this action
     public List<BaseFactor> Factors;
 
-    //Action that will be performed if this is picked
-    public AIAction ActionToPerform;
-
     virtual public int GetRank(GameObject aiToCheck)
     {
         if (_rank > 0 && _nextChacheTime > Time.timeSinceLevelLoad)

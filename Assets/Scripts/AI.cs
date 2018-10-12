@@ -33,4 +33,6 @@ public class AI : MonoBehaviour
     {
         return DroppedItem;
     }
+
+    public List<BaseAction> actions = new List<BaseAction>();
 }

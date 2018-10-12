@@ -8,8 +8,6 @@ public class AIManager : MonoBehaviour
 {
     private static AIManager _instance;
 
-    public List<BaseAction> Actions;
-
     public List<GameObject> allAI = new List<GameObject>();
 
     public NavMeshAgent agent;
@@ -54,7 +52,7 @@ public class AIManager : MonoBehaviour
 
     void Start()
     {
-        GameObject g = GameObject.Find("AI");
+        GameObject g = GameObject.FindWithTag("AI");
 
         allAI.Add(g);
 
@@ -69,9 +67,12 @@ public class AIManager : MonoBehaviour
     void UpdateAI()
     {
         //for every AI
+        print("Number of ais in ai manager is " + allAI.Count);
         foreach (var ai in allAI)
         {
+            print("Trying to find settings on " + ai.name);
             var settings = ai.GetComponent<AI>();
+            if (settings == null) print("Couldn't find settings on ai game object!");
 
             if (!settings.CanPerformAction)
                 continue;
@@ -82,9 +83,9 @@ public class AIManager : MonoBehaviour
 
             var decisionWeight = 0;
 
-            AIAction decision;
+            BaseAction decision = null;
 
-            foreach (var action in Actions)
+            foreach (var action in settings.actions)
             {
                 var curActionRank = action.GetRank(ai);
 
@@ -101,14 +102,14 @@ public class AIManager : MonoBehaviour
 
                     decisionWeight = curActionWeight;
 
-                    decision = action.ActionToPerform;
+                    decision = action;
 
                     Debug.Log("made decision");
                 }
             }
 
-            var aiAction = ai.AddComponent(typeof(AIAction));
-            //aiAction.Run();
+            //var aiAction = ai.AddComponent(typeof(BaseAction));
+            if( decision != null ) decision.Run( ai );
             Debug.Log("made action");
         }
     }
