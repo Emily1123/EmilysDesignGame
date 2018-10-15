@@ -27,9 +27,9 @@ public class AI : MonoBehaviour
 
     public bool CanPerformAction { get; set; }
 
-    public Item DroppedItem { get; set; }
+    public ItemDrop DroppedItem { get; set; }
 
-    public Item DropItem()
+    public ItemDrop DropItem()
     {
         return DroppedItem;
     }
