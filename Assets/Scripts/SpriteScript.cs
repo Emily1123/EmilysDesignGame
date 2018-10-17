@@ -59,6 +59,11 @@ public class SpriteScript : MonoBehaviour {
             tookDamage = true;
             animator.SetBool("tookDamage", true);
         }
+        else if (Input.GetKeyUp(KeyCode.A))
+        {
+            tookDamage = false;
+            animator.SetBool("tookDamage", false);
+        }
         //dead animation for testing//
         if (Input.GetKeyDown(KeyCode.Z))
         {
