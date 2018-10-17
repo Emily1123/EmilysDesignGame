@@ -80,10 +80,7 @@ public class SpriteScript : MonoBehaviour {
                 dead = false;
             }
         }
-    }
 
-    void LateUpdate()
-    {
         transform.localPosition = new Vector3(target.localPosition.x, transform.localPosition.y, target.localPosition.z);
     }
 }

@@ -19,7 +19,7 @@ public class BaseAction : MonoBehaviour
     //Factors to consider for this action
     public List<BaseFactor> Factors;
 
-    virtual public int GetRank(GameObject aiToCheck)
+    virtual public int GetRank(AI aiToCheck)
     {
         if (_rank > 0 && _nextChacheTime > Time.timeSinceLevelLoad)
         {
@@ -42,7 +42,7 @@ public class BaseAction : MonoBehaviour
         return _rank;
     }
 
-    virtual public int GetWeight(GameObject aiToCheck)
+    virtual public int GetWeight(AI aiToCheck)
     {
         //sum of bonuses * product of multipliers
         _weightBonus = 0;
@@ -57,5 +57,5 @@ public class BaseAction : MonoBehaviour
         return _weightBonus;
     }
 
-    virtual public void Run(GameObject ai) { }
+    virtual public void Run(AI ai) { }
 }

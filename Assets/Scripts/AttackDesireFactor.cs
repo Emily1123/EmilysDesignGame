@@ -19,7 +19,7 @@ public class AttackDesireFactor : BaseFactor
     //player health
     float playerHp;
 
-    override public int GetFactorRank(GameObject aiToCheck)
+    override public int GetFactorRank(AI aiToCheck)
     {
         hp = GetComponent<AI>().CurrentHitpoints;
 
@@ -54,7 +54,7 @@ public class AttackDesireFactor : BaseFactor
         }
     }
 
-    override public int GetFactorBonus(GameObject aiToCheck)
+    override public int GetFactorBonus(AI aiToCheck)
     {
         //if player is low health, give higher weight
         if (playerHp < 20)
@@ -65,7 +65,7 @@ public class AttackDesireFactor : BaseFactor
         return 1;
     }
 
-    override public int GetFactorMultiplier(GameObject aiToCheck)
+    override public int GetFactorMultiplier(AI aiToCheck)
     {
         //if AI health is low, set weight to 0
         if (hp < 10)

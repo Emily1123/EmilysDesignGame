@@ -51,6 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1017f6253f7df49a421d20fc5a9724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseWeight: 0
+  BaseWeight: 1
   SecondsToCacheRank: 10
   Factors: []

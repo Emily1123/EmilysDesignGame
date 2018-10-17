@@ -11,7 +11,7 @@ public class ThreatFactor : BaseFactor
     //max damage the player can dish out
     float maxDamage;
 
-    override public int GetFactorRank(GameObject aiToCheck)
+    override public int GetFactorRank(AI aiToCheck)
     {
         hp = GetComponent<AI>().CurrentHitpoints;
 
@@ -38,12 +38,12 @@ public class ThreatFactor : BaseFactor
         return 0;
     }
 
-    override public int GetFactorBonus(GameObject aiToCheck)
+    override public int GetFactorBonus(AI aiToCheck)
     {
         return 1;
     }
 
-    override public int GetFactorMultiplier(GameObject aiToCheck)
+    override public int GetFactorMultiplier(AI aiToCheck)
     {
         //if AI health is low, give higher weight
         if (hp < 10)
