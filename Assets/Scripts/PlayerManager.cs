@@ -79,6 +79,6 @@ public class PlayerManager : MonoBehaviour
     {
         YouDead = true;
 
-        playerMovement.enabled = false;
+        //playerMovement.enabled = false;
     }
 }
