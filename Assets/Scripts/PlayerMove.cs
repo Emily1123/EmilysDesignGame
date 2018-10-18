@@ -4,33 +4,42 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] private string horizontalInputName;
-    [SerializeField] private string verticalInputName;
-    [SerializeField] private float movementSpeed;
+    CharacterController characterController;
 
-    private CharacterController charController;
+    public float speed = 6.0f;
+    public float jumpSpeed = 8.0f;
+    public float gravity = 20.0f;
 
+    private Vector3 moveDirection = Vector3.zero;
 
-    private void Awake()
+    void Start()
     {
-        charController = GetComponent<CharacterController>();
+        characterController = GetComponent<CharacterController>();
     }
 
-    private void Update()
+    void Update()
     {
-        PlayerMovement();
-    }
+        if (characterController.isGrounded)
+        {
+            // We are grounded, so recalculate
+            // move direction directly from axes
 
-    private void PlayerMovement()
-    {
-        float horizInput = Input.GetAxis(horizontalInputName) * movementSpeed;
-        float vertInput = Input.GetAxis(verticalInputName) * movementSpeed;
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            moveDirection *= speed;
 
-        Vector3 forwardMovement = transform.forward * vertInput;
-        Vector3 rightMovement = transform.right * horizInput;
+            if (Input.GetButtonDown("Jump"))
+            {
+                moveDirection.y = jumpSpeed;
+            }
+        }
 
-        charController.SimpleMove(forwardMovement + rightMovement);
+        // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
+        // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
+        // as an acceleration (ms^-2)
+        moveDirection.y -= gravity * Time.deltaTime;
 
+        // Move the controller
+        characterController.Move(moveDirection * Time.deltaTime);
     }
 }
 

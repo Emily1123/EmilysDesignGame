@@ -6,111 +6,61 @@ using UnityEngine.AI;
 
 public class AIManager : MonoBehaviour
 {
-    private static AIManager _instance;
 
-    public List<GameObject> allAI = new List<GameObject>();
+    public Transform target;
+    public float thinkRate;
 
     public NavMeshAgent agent;
-
     public Animator anim;
-
-    public static AIManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<AIManager>();
-
-                if (_instance == null)
-                {
-                    GameObject go = new GameObject{name = typeof(AIManager).Name};
-
-                    _instance = go.AddComponent<AIManager>();
-
-                    DontDestroyOnLoad(go);
-                }
-            }
-
-            return _instance;
-        }
-    }
-
-    private void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    public AI ai;
 
     void Start()
     {
         GameObject g = GameObject.FindWithTag("AI");
 
-        allAI.Add(g);
+        StartCoroutine( RepeatAI() );
+    }
 
-        //call every 3 frames
-        InvokeRepeating("UpdateAI", 0f, 180f);
+    IEnumerator RepeatAI() {
+        while( enabled ) {
+            UpdateAI();
 
-        agent = GetComponent<NavMeshAgent>();
-
-        anim = GetComponent<Animator>();
+            yield return new WaitForSeconds( thinkRate );
+        }
     }
 
     void UpdateAI()
     {
-        //for every AI
-        print("Number of ais in ai manager is " + allAI.Count);
-        foreach (var ai in allAI)
+        if (ai == null) print("Couldn't find settings on ai game object!");
+
+        var decisionRank = -1; // TODO: Set back to zero once we have some factors to work with
+
+        var decisionWeight = -1;
+
+        BaseAction decision = null;
+
+        foreach (var action in ai.actions)
         {
-            print("Trying to find settings on " + ai.name);
-            var settings = ai.GetComponent<AI>();
-            if (settings == null) print("Couldn't find settings on ai game object!");
+            var curActionRank = action.GetRank(ai);
 
-            if (!settings.CanPerformAction)
-                continue;
+            var curActionWeight = action.GetWeight(ai);
 
-            Debug.Log("AI for action");
-
-            var decisionRank = 0;
-
-            var decisionWeight = 0;
-
-            BaseAction decision = null;
-
-            foreach (var action in settings.actions)
+            if (curActionRank >= decisionRank && curActionWeight > decisionWeight)
             {
-                var curActionRank = action.GetRank(ai);
+                decisionRank = curActionRank;
 
-                var curActionWeight = action.GetWeight(ai);
+                decisionWeight = curActionWeight;
 
-                if (curActionWeight <= 0)
-                    continue;
-
-                Debug.Log("selecting action");
-
-                if (curActionRank > decisionRank || curActionRank == decisionRank && curActionWeight > decisionWeight)
-                {
-                    decisionRank = curActionRank;
-
-                    decisionWeight = curActionWeight;
-
-                    decision = action;
-
-                    Debug.Log("made decision");
-                }
+                decision = action;
             }
-
-            //var aiAction = ai.AddComponent(typeof(BaseAction));
-            if( decision != null ) decision.Run( ai );
-            Debug.Log("made action");
         }
+
+        //var aiAction = ai.AddComponent(typeof(BaseAction));
+        if( decision != null ) decision.Run( ai );
+    }
+
+    void Update()
+    {
+        transform.localPosition = new Vector3(target.localPosition.x, transform.localPosition.y, target.localPosition.z);
     }
 }

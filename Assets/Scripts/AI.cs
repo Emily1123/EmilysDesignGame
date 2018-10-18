@@ -25,9 +25,9 @@ public class AI : MonoBehaviour
 
     public bool CanAttack { get; set; }
 
-    public bool CanPerformAction { get; set; }
-
     public ItemDrop DroppedItem { get; set; }
+
+    public AIManager aiManager;
 
     public ItemDrop DropItem()
     {

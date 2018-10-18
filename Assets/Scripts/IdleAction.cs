@@ -7,7 +7,7 @@ public class IdleAction : BaseAction
 {
     //public List<BaseFactor> Factors;
 
-    override public int GetRank(GameObject aiToCheck)
+    override public int GetRank(AI aiToCheck)
     {
         var rank = 0;
 
@@ -22,7 +22,7 @@ public class IdleAction : BaseAction
         return rank;
     }
 
-    override public int GetWeight(GameObject aiToCheck)
+    override public int GetWeight(AI aiToCheck)
     {
         //sum of bonuses * product of multipliers
         var weight = 0;
@@ -35,15 +35,11 @@ public class IdleAction : BaseAction
         return weight;
     }
 
-    override public void Run(GameObject ai)
+    override public void Run(AI ai)
     {
-        var mySettings = ai.GetComponent<AI>();
+        float wanderRadius = ai.WanderRadius;
 
-        mySettings.CanPerformAction = false;
-
-        float wanderRadius = GetComponent<AI>().WanderRadius;
-
-        int wanderTimer = GetComponent<AI>().WanderTime;
+        int wanderTimer = ai.WanderTime;
 
         int seconds = 0;
 
@@ -57,13 +53,9 @@ public class IdleAction : BaseAction
             {
                 Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
 
-                AIManager aiManager = ai.GetComponent<AIManager>();
-
-                aiManager.agent.destination = newPos;
+                ai.aiManager.agent.destination = newPos;
             }
         }
-
-        mySettings.CanPerformAction = true;
 
         //Remove this script from its parent
         Destroy(this);

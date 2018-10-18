@@ -6,7 +6,7 @@ public class PursueAction : BaseAction
 {
     //public List<BaseFactor> Factors;
 
-    override public int GetRank(GameObject aiToCheck)
+    override public int GetRank(AI aiToCheck)
     {
         var rank = 0;
 
@@ -21,7 +21,7 @@ public class PursueAction : BaseAction
         return rank;
     }
 
-    override public int GetWeight(GameObject aiToCheck)
+    override public int GetWeight(AI aiToCheck)
     {
         //sum of bonuses * product of multipliers
         var weight = 0;
@@ -34,25 +34,10 @@ public class PursueAction : BaseAction
         return weight;
     }
 
-    override public void Run(GameObject ai)
+    override public void Run(AI ai)
     {
-        var mySettings = ai.GetComponent<AI>();
-
-        mySettings.CanPerformAction = false;
-
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        Vector3 direction = player.transform.position - transform.position;
-
-        direction = direction * 2;
-
-        AIManager aiManager = ai.GetComponent<AIManager>();
-
-        aiManager.agent.destination = direction;
-
-        mySettings.CanPerformAction = true;
-
-        //Remove this script from its parent
-        Destroy(this);
+        ai.aiManager.agent.destination = player.transform.position;
     }
 }

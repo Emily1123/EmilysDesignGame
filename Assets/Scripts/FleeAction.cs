@@ -7,7 +7,7 @@ public class FleeAction : BaseAction
 {
    //public List<BaseFactor> Factors;
 
-    override public int GetRank(GameObject aiToCheck)
+    override public int GetRank(AI aiToCheck)
     {
         var rank = 0;
 
@@ -22,7 +22,7 @@ public class FleeAction : BaseAction
         return rank;
     }
 
-    override public int GetWeight(GameObject aiToCheck)
+    override public int GetWeight(AI aiToCheck)
     {
         //sum of bonuses * product of multipliers
         var weight = 0;
@@ -35,23 +35,15 @@ public class FleeAction : BaseAction
         return weight;
     }
 
-    override public void Run(GameObject ai)
+    override public void Run(AI ai)
     {
-        var mySettings = ai.GetComponent<AI>();
-
-        mySettings.CanPerformAction = false;
-
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         Vector3 direction = transform.position - player.transform.position;
 
         direction = direction * 2;
 
-        AIManager aiManager = ai.GetComponent<AIManager>();
-
-        aiManager.agent.destination = direction;
-
-        mySettings.CanPerformAction = true;
+        ai.aiManager.agent.destination = direction;
 
         //Remove this script from its parent
         Destroy(this);
