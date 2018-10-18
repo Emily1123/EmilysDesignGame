@@ -15,7 +15,6 @@ public class PursueAction : BaseAction
                 rank += factor.GetFactorRank(aiToCheck);
             }
         }
-
         return rank;
     }
 
@@ -28,7 +27,6 @@ public class PursueAction : BaseAction
         {
             weight += factor.GetFactorBonus(aiToCheck) * factor.GetFactorMultiplier(aiToCheck);
         }
-
         return weight;
     }
 

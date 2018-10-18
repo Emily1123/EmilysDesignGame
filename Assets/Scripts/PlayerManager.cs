@@ -4,17 +4,71 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public float StartingHP { get; set; }
+    [SerializeField]
+    private float _startingHP;
+    public float StartingHP
+    {
+        get { return _startingHP; }
+        set
+        {
+            _startingHP = value;
+        }
+    }
 
-    public float CurrentHP { get; set; }
+    [SerializeField]
+    private float _currentHP;
+    public float CurrentHP
+    {
+        get { return _currentHP; }
+        set
+        {
+            _currentHP = value;
+        }
+    }
 
-    public float MinAttack { get; set; }
+    [SerializeField]
+    private float _minAttack;
+    public float MinAttack
+    {
+        get { return _minAttack; }
+        set
+        {
+            _minAttack = value;
+        }
+    }
 
-    public float MaxAttack { get; set; }
+    [SerializeField]
+    private float _maxAttack;
+    public float MaxAttack
+    {
+        get { return _maxAttack; }
+        set
+        {
+            _maxAttack = value;
+        }
+    }
 
-    public float AmountDamage { get; set; }
+    [SerializeField]
+    private float _amountDamage;
+    public float AmountDamage
+    {
+        get { return _amountDamage; }
+        set
+        {
+            _amountDamage = value;
+        }
+    }
 
-    public bool YouDead { get; set; }
+    [SerializeField]
+    private bool _youDead;
+    public bool YouDead
+    {
+        get { return _youDead; }
+        set
+        {
+            _youDead = value;
+        }
+    }
 
     public GameObject player;
 
@@ -62,7 +116,7 @@ public class PlayerManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        playerMovement = GetComponent<PlayerMove>();
+        //playerMovement = GetComponent<PlayerMove>();
 
         CurrentHP = StartingHP;
     }

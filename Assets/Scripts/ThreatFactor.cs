@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ThreatFactor : BaseFactor
 {
+    public AI ai;
+
     //AI health
     float hp;
 
@@ -13,10 +15,17 @@ public class ThreatFactor : BaseFactor
 
     override public int GetFactorRank(AI aiToCheck)
     {
-        hp = GetComponent<AI>().CurrentHitpoints;
+        if (ai != null)
+        {
+            hp = GetComponent<AI>().CurrentHitpoints;
 
-        maxDamage = GetComponent<PlayerManager>().MaxAttack;
-
+            maxDamage = GetComponent<PlayerManager>().MaxAttack;
+        }
+        else
+        {
+            print("No AI found on MyObject for threat factor!");
+        }
+        
         //determine what percentage of AI’s current hit points will be taken away if the player hits for maximum damage
         float score = Math.Min((maxDamage / hp), 1);
 

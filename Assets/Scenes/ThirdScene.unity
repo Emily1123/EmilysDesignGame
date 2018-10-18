@@ -342,6 +342,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc9ed24b8e0b22419903646e3f70eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _id: 1
+  _currentHitpoints: 100
+  _maximumHitpoints: 100
+  _damage: 10
+  _aggressiveness: 5
+  _attackRange: 5
+  _wanderTime: 5
+  _wanderRadius: 5
+  _name: AI1
+  _canAttack: 1
+  _droppedItem: {fileID: 114249903214243466, guid: 5e3631c9552b367418e03e47d451ccab,
+    type: 2}
   aiManager: {fileID: 370594846}
   actions:
   - {fileID: 114385900818165728, guid: 8abbae4b872ee0a488592a5dc0a49c56, type: 2}
@@ -484,7 +496,7 @@ Transform:
   m_GameObject: {fileID: 126075952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.65, y: 2.5166, z: 0.875}
-  m_LocalScale: {x: 0.1, y: 1, z: 2}
+  m_LocalScale: {x: 0.1, y: 10.67, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -1216,7 +1228,6 @@ GameObject:
   - component: {fileID: 825347394}
   - component: {fileID: 825347393}
   - component: {fileID: 825347392}
-  - component: {fileID: 825347391}
   - component: {fileID: 825347390}
   - component: {fileID: 825347389}
   m_Layer: 8
@@ -1257,27 +1268,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &825347391
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 825347388}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!65 &825347392
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1686,7 +1676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 825347395}
-  damping: 0.3
+  damping: 0.5
   lookAheadFactor: 1.5
   lookAheadReturnSpeed: 0.1
   lookAheadMoveThreshold: 0.1
@@ -2002,6 +1992,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1514606782}
   - component: {fileID: 1514606781}
+  - component: {fileID: 1514606783}
   m_Layer: 0
   m_Name: _GM
   m_TagString: Untagged
@@ -2042,6 +2033,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1514606783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1514606780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591513f2a590fad4ebeb52bf534fd6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startingHP: 100
+  _currentHP: 100
+  _minAttack: 5
+  _maxAttack: 10
+  _amountDamage: 15
+  _youDead: 0
+  player: {fileID: 556857767}
+  playerMovement: {fileID: 825347389}
 --- !u!1 &2052257864
 GameObject:
   m_ObjectHideFlags: 0
@@ -2080,7 +2090,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2052257864}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

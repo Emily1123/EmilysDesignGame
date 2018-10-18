@@ -25,16 +25,23 @@ public class AttackDesireFactor : BaseFactor
 
     override public int GetFactorRank(AI aiToCheck)
     {
-        hp = ai.CurrentHitpoints;
+        if (ai != null)
+        {
+            hp = GetComponent<AI>().CurrentHitpoints;
 
-        aggressiveness = ai.Aggressiveness;
+            aggressiveness = GetComponent<AI>().Aggressiveness;
 
-        minDamage = player.MinAttack;
+            minDamage = GetComponent<PlayerManager>().MinAttack;
 
-        maxDamage = player.MinAttack;
+            maxDamage = GetComponent<PlayerManager>().MaxAttack;
 
-        playerHp = player.CurrentHP;
-
+            playerHp = GetComponent<PlayerManager>().CurrentHP;
+        }
+        else
+        {
+            print("No AI or player found on MyObject for attack desire factor!");
+        }
+       
         //range-bound linear attack-desire curve
         float inverseRatio = 1 - ((float)(playerHp - minDamage) / (maxDamage - minDamage));
 

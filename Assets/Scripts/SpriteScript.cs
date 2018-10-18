@@ -54,12 +54,12 @@ public class SpriteScript : MonoBehaviour {
         {
             animator.SetBool("isJumping", false);
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             tookDamage = true;
             animator.SetBool("tookDamage", true);
         }
-        else if (Input.GetKeyUp(KeyCode.A))
+        else if (Input.GetKeyUp(KeyCode.Q))
         {
             tookDamage = false;
             animator.SetBool("tookDamage", false);

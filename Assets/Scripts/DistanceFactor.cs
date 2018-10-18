@@ -12,7 +12,14 @@ public class DistanceFactor : BaseFactor
 
     override public int GetFactorRank(AI aiToCheck)
     {
-        attackRange = ai.AttackRange;
+        if (ai != null)
+        {
+            attackRange = GetComponent<AI>().AttackRange;
+        }
+        else
+        {
+            print("No AI found on MyObject for distance factor!");
+        }
 
         RaycastHit hit;
 

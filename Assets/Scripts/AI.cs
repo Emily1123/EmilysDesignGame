@@ -5,34 +5,128 @@ using UnityEngine;
 
 public class AI : MonoBehaviour
 {
-    public int ID { get; set; }
+    [SerializeField]
+    private int _id;
+    public int ID
+    {
+        get { return _id; }
+        set
+        {
+            _id = value;
+        }
+    }
 
-    public float CurrentHitpoints { get; set; }
+    [SerializeField]
+    private float _currentHitpoints;
+    public float CurrentHitpoints
+    {
+        get { return _currentHitpoints; }
+        set
+        {
+            _currentHitpoints = value;
+        }
+    }
 
-    public float MaximumHitpoints { get; set; }
+    [SerializeField]
+    private float _maximumHitpoints;
+    public float MaximumHitpoints
+    {
+        get { return _maximumHitpoints; }
+        set
+        {
+            _maximumHitpoints = value;
+        }
+    }
 
-    public float Damage { get; set; }
+    [SerializeField]
+    private float _damage;
+    public float Damage
+    {
+        get { return _damage; }
+        set
+        {
+            _damage = value;
+        }
+    }
 
-    public float Aggressiveness { get; set; }
+    [SerializeField]
+    private float _aggressiveness;
+    public float Aggressiveness
+    {
+        get { return _aggressiveness; }
+        set
+        {
+            _aggressiveness = value;
+        }
+    }
 
-    public float AttackRange { get; set; }
+    [SerializeField]
+    private float _attackRange;
+    public float AttackRange
+    {
+        get { return _attackRange; }
+        set
+        {
+            _attackRange = value;
+        }
+    }
 
-    public int WanderTime { get; set; }
+    [SerializeField]
+    private int _wanderTime;
+    public int WanderTime
+    {
+        get { return _wanderTime; }
+        set
+        {
+            _wanderTime = value;
+        }
+    }
 
-    public float WanderRadius { get; set; }
+    [SerializeField]
+    private float _wanderRadius;
+    public float WanderRadius
+    {
+        get { return _wanderRadius; }
+        set
+        {
+            _wanderRadius = value;
+        }
+    }
 
-    public string Name { get; set; }
+    [SerializeField]
+    private string _name;
+    public string Name
+    {
+        get { return _name; }
+        set
+        {
+            _name = value;
+        }
+    }
 
-    public bool CanAttack { get; set; }
+    [SerializeField]
+    private bool _canAttack;
+    public bool CanAttack
+    {
+        get { return _canAttack; }
+        set
+        {
+            _canAttack = value;
+        }
+    }
 
-    public ItemDrop DroppedItem { get; set; }
+    [SerializeField]
+    private ItemDrop _droppedItem;
+    public ItemDrop DroppedItem
+    {
+        get { return _droppedItem; }
+        set
+        {
+            _droppedItem = value;
+        }
+    }
 
     public AIManager aiManager;
-
-    public ItemDrop DropItem()
-    {
-        return DroppedItem;
-    }
 
     public List<BaseAction> actions = new List<BaseAction>();
 }

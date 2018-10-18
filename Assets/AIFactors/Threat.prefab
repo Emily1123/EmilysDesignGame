@@ -9,51 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1435372696255960}
+  m_RootGameObject: {fileID: 1988118200451528}
   m_IsPrefabAsset: 1
---- !u!1 &1435372696255960
+--- !u!1 &1988118200451528
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4365933757032432}
-  - component: {fileID: 114313256083307928}
+  - component: {fileID: 4367680306070660}
+  - component: {fileID: 114970723196453136}
   m_Layer: 0
-  m_Name: Idle
+  m_Name: Threat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4365933757032432
+--- !u!4 &4367680306070660
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1435372696255960}
+  m_GameObject: {fileID: 1988118200451528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72727084, y: 2.6904716, z: -1.81}
+  m_LocalPosition: {x: -4.626587, y: 6.3185363, z: -0.0077311303}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114313256083307928
+--- !u!114 &114970723196453136
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1435372696255960}
+  m_GameObject: {fileID: 1988118200451528}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0713b0faf28bef4ba965c50c3cbf45e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a608da05073e72458fc69f2701997ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseWeight: 0
-  SecondsToCacheRank: 10
-  Factors:
-  - {fileID: 114848774892227742, guid: a93eb4dc49977584ebf7ac05cca30461, type: 2}
-  - {fileID: 114893217713465488, guid: 0cea485116f35d94abc66793c50a4ff2, type: 2}
-  - {fileID: 114970723196453136, guid: e2eb99cb2d9550548957aa431564e4e9, type: 2}
+  ai: {fileID: 0}

@@ -18,17 +18,6 @@ public class AIManager : MonoBehaviour
 
     void Start()
     {
-        ai.ID = 001;
-        ai.CurrentHitpoints = 100;
-        ai.MaximumHitpoints = 100;
-        ai.Damage = 10;
-        ai.Aggressiveness = 5;
-        ai.AttackRange = 5;
-        ai.WanderTime = 5;
-        ai.WanderRadius = 5;
-        ai.Name = "enemy";
-        ai.CanAttack = true;
-
         StartCoroutine( RepeatAI() );
     }
 

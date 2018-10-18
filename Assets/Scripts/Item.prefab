@@ -9,51 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1435372696255960}
+  m_RootGameObject: {fileID: 1787129028777114}
   m_IsPrefabAsset: 1
---- !u!1 &1435372696255960
+--- !u!1 &1787129028777114
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4365933757032432}
-  - component: {fileID: 114313256083307928}
-  m_Layer: 0
-  m_Name: Idle
+  - component: {fileID: 4279607234301998}
+  - component: {fileID: 114249903214243466}
+  m_Layer: 11
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4365933757032432
+--- !u!4 &4279607234301998
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1435372696255960}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72727084, y: 2.6904716, z: -1.81}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 1787129028777114}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.4, z: 1.02}
+  m_LocalScale: {x: -0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114313256083307928
+--- !u!114 &114249903214243466
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1435372696255960}
+  m_GameObject: {fileID: 1787129028777114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0713b0faf28bef4ba965c50c3cbf45e, type: 3}
+  m_Script: {fileID: 11500000, guid: f261abe5179a3e44faec5dac4175667e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseWeight: 0
-  SecondsToCacheRank: 10
-  Factors:
-  - {fileID: 114848774892227742, guid: a93eb4dc49977584ebf7ac05cca30461, type: 2}
-  - {fileID: 114893217713465488, guid: 0cea485116f35d94abc66793c50a4ff2, type: 2}
-  - {fileID: 114970723196453136, guid: e2eb99cb2d9550548957aa431564e4e9, type: 2}
