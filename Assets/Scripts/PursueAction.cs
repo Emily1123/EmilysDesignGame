@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PursueAction : BaseAction
 {
-    //public List<BaseFactor> Factors;
-
     override public int GetRank(AI aiToCheck)
     {
         var rank = 0;

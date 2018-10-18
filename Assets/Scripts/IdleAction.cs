@@ -5,8 +5,6 @@ using UnityEngine.AI;
 
 public class IdleAction : BaseAction
 {
-    //public List<BaseFactor> Factors;
-
     override public int GetRank(AI aiToCheck)
     {
         var rank = 0;

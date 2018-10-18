@@ -7,15 +7,15 @@ public class AI : MonoBehaviour
 {
     public int ID { get; set; }
 
-    public int CurrentHitpoints { get; set; }
+    public float CurrentHitpoints { get; set; }
 
-    public int MaximumHitpoints { get; set; }
+    public float MaximumHitpoints { get; set; }
 
-    public int Damage { get; set; }
+    public float Damage { get; set; }
 
-    public int Aggressiveness { get; set; }
+    public float Aggressiveness { get; set; }
 
-    public int AttackRange { get; set; }
+    public float AttackRange { get; set; }
 
     public int WanderTime { get; set; }
 

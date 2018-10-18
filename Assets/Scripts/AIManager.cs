@@ -6,23 +6,35 @@ using UnityEngine.AI;
 
 public class AIManager : MonoBehaviour
 {
-
     public Transform target;
+
     public float thinkRate;
 
     public NavMeshAgent agent;
+
     public Animator anim;
+
     public AI ai;
 
     void Start()
     {
-        GameObject g = GameObject.FindWithTag("AI");
+        ai.ID = 001;
+        ai.CurrentHitpoints = 100;
+        ai.MaximumHitpoints = 100;
+        ai.Damage = 10;
+        ai.Aggressiveness = 5;
+        ai.AttackRange = 5;
+        ai.WanderTime = 5;
+        ai.WanderRadius = 5;
+        ai.Name = "enemy";
+        ai.CanAttack = true;
 
         StartCoroutine( RepeatAI() );
     }
 
     IEnumerator RepeatAI() {
-        while( enabled ) {
+        while( enabled )
+        {
             UpdateAI();
 
             yield return new WaitForSeconds( thinkRate );
@@ -33,9 +45,9 @@ public class AIManager : MonoBehaviour
     {
         if (ai == null) print("Couldn't find settings on ai game object!");
 
-        var decisionRank = -1; // TODO: Set back to zero once we have some factors to work with
+        var decisionRank = 0;
 
-        var decisionWeight = -1;
+        var decisionWeight = 0;
 
         BaseAction decision = null;
 
@@ -55,7 +67,6 @@ public class AIManager : MonoBehaviour
             }
         }
 
-        //var aiAction = ai.AddComponent(typeof(BaseAction));
         if( decision != null ) decision.Run( ai );
     }
 

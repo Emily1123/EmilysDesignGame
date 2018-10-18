@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class AttackAction : BaseAction
 {
-    //public List<BaseFactor> Factors;
-
     override public int GetRank(AI aiToCheck)
     {
         var rank = 0;
@@ -42,8 +40,5 @@ public class AttackAction : BaseAction
         PlayerManager playerManager = player.GetComponent<PlayerManager>();
 
         playerManager.CurrentHP -= ai.Damage;
-
-        //Remove this script from its parent
-        Destroy(this);
     }
 }

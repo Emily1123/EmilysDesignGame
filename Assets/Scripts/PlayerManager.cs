@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public int StartingHP { get; set; }
+    public float StartingHP { get; set; }
 
-    public int CurrentHP { get; set; }
+    public float CurrentHP { get; set; }
 
-    public int MinAttack { get; set; }
+    public float MinAttack { get; set; }
 
-    public int MaxAttack { get; set; }
+    public float MaxAttack { get; set; }
 
-    public int AmountDamage { get; set; }
+    public float AmountDamage { get; set; }
 
     public bool YouDead { get; set; }
 

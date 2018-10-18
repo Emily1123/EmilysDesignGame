@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[Serializable]
 public class BaseFactor : MonoBehaviour
 {
-
     virtual public int GetFactorRank(AI aiToCheck)
     {
         //default rank is 0

@@ -9,50 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1365296829441922}
+  m_RootGameObject: {fileID: 1105192361559424}
   m_IsPrefabAsset: 1
---- !u!1 &1365296829441922
+--- !u!1 &1105192361559424
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4792130716836932}
-  - component: {fileID: 114385900818165728}
+  - component: {fileID: 4370541440249540}
+  - component: {fileID: 114893217713465488}
   m_Layer: 0
-  m_Name: Pursue
+  m_Name: Distance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4792130716836932
+--- !u!4 &4370541440249540
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1365296829441922}
+  m_GameObject: {fileID: 1105192361559424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72727084, y: 2.6904716, z: -1.81}
+  m_LocalPosition: {x: -0.8010849, y: 4.9338164, z: 1.0634766}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114385900818165728
+--- !u!114 &114893217713465488
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1365296829441922}
+  m_GameObject: {fileID: 1105192361559424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a1017f6253f7df49a421d20fc5a9724, type: 3}
+  m_Script: {fileID: 11500000, guid: 029fe526d52e2354c9a82c3dd9ad5050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseWeight: 0
-  SecondsToCacheRank: 10
-  Factors:
-  - {fileID: 114893217713465488, guid: 0cea485116f35d94abc66793c50a4ff2, type: 2}
-  - {fileID: 114848774892227742, guid: a93eb4dc49977584ebf7ac05cca30461, type: 2}

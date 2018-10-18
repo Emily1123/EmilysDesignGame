@@ -6,11 +6,13 @@ using UnityEngine;
 public class DistanceFactor : BaseFactor
 {
     //max distance AI's attack can reach
+    public AI ai;
+
     float attackRange;
 
     override public int GetFactorRank(AI aiToCheck)
     {
-        attackRange = GetComponent<AI>().AttackRange;
+        attackRange = ai.AttackRange;
 
         RaycastHit hit;
 

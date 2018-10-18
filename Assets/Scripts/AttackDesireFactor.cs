@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class AttackDesireFactor : BaseFactor
 {
+    public AI ai;
+
+    public PlayerManager player;
+
     //AI health
     float hp;
 
@@ -21,15 +25,15 @@ public class AttackDesireFactor : BaseFactor
 
     override public int GetFactorRank(AI aiToCheck)
     {
-        hp = GetComponent<AI>().CurrentHitpoints;
+        hp = ai.CurrentHitpoints;
 
-        aggressiveness = GetComponent<AI>().Aggressiveness;
+        aggressiveness = ai.Aggressiveness;
 
-        minDamage = GetComponent<PlayerManager>().MinAttack;
+        minDamage = player.MinAttack;
 
-        maxDamage = GetComponent<PlayerManager>().MaxAttack;
+        maxDamage = player.MinAttack;
 
-        playerHp = GetComponent<PlayerManager>().CurrentHP;
+        playerHp = player.CurrentHP;
 
         //range-bound linear attack-desire curve
         float inverseRatio = 1 - ((float)(playerHp - minDamage) / (maxDamage - minDamage));
