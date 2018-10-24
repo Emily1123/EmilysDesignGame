@@ -61,17 +61,6 @@ public class AI : MonoBehaviour
     }
 
     [SerializeField]
-    private float _attackRange;
-    public float AttackRange
-    {
-        get { return _attackRange; }
-        set
-        {
-            _attackRange = value;
-        }
-    }
-
-    [SerializeField]
     private int _wanderTime;
     public int WanderTime
     {

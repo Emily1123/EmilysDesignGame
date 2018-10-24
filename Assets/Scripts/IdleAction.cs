@@ -20,18 +20,18 @@ public class IdleAction : BaseAction
         return rank;
     }
 
-    override public int GetWeight(AI aiToCheck)
-    {
-        //sum of bonuses * product of multipliers
-        var weight = 0;
+    // override public int GetWeight(AI aiToCheck)
+    // {
+    //     //sum of bonuses * product of multipliers
+    //     var weight = 0;
 
-        foreach (var factor in Factors)
-        {
-            weight += factor.GetFactorBonus(aiToCheck) * factor.GetFactorMultiplier(aiToCheck);
-        }
+    //     foreach (var factor in Factors)
+    //     {
+    //         weight += factor.GetFactorBonus(aiToCheck) * factor.GetFactorMultiplier(aiToCheck);
+    //     }
 
-        return weight;
-    }
+    //     return weight;
+    // }
 
     override public void Run(AI ai)
     {

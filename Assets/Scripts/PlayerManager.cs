@@ -80,20 +80,6 @@ public class PlayerManager : MonoBehaviour
     {
         get
         {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<PlayerManager>();
-
-                if (_instance == null)
-                {
-                    GameObject go = new GameObject { name = typeof(PlayerManager).Name };
-
-                    _instance = go.AddComponent<PlayerManager>();
-
-                    DontDestroyOnLoad(go);
-                }
-            }
-
             return _instance;
         }
     }
@@ -103,8 +89,6 @@ public class PlayerManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-
-            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -114,10 +98,6 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-
-        //playerMovement = GetComponent<PlayerMove>();
-
         CurrentHP = StartingHP;
     }
 

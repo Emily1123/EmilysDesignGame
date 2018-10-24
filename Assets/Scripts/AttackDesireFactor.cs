@@ -6,8 +6,7 @@ using UnityEngine;
 public class AttackDesireFactor : BaseFactor
 {
     public AI ai;
-
-    public PlayerManager player;
+    public int importance;
 
     //AI health
     float hp;
@@ -25,66 +24,50 @@ public class AttackDesireFactor : BaseFactor
 
     override public int GetFactorRank(AI aiToCheck)
     {
-        if (ai != null)
-        {
-            hp = GetComponent<AI>().CurrentHitpoints;
-
-            aggressiveness = GetComponent<AI>().Aggressiveness;
-
-            minDamage = GetComponent<PlayerManager>().MinAttack;
-
-            maxDamage = GetComponent<PlayerManager>().MaxAttack;
-
-            playerHp = GetComponent<PlayerManager>().CurrentHP;
-        }
-        else
-        {
-            print("No AI or player found on MyObject for attack desire factor!");
-        }
-       
+       return importance;
         //range-bound linear attack-desire curve
-        float inverseRatio = 1 - ((float)(playerHp - minDamage) / (maxDamage - minDamage));
+        // float inverseRatio = 1 - ((float)(playerHp - minDamage) / (maxDamage - minDamage));
 
-        float calcNum = (inverseRatio * (1 - aggressiveness)) + aggressiveness;
+        // float calcNum = (inverseRatio * (1 - aggressiveness)) + aggressiveness;
 
-        float score = Math.Max(Math.Min(calcNum, 1), aggressiveness);
+        // float score = Math.Max(Math.Min(calcNum, 1), aggressiveness);
 
-        if (score > 0.8)
-        {
-            return 15;
-        }
+        // if (score > 0.8)
+        // {
+        //     return 15;
+        // }
 
-        if (score > 0.6)
-        {
-            return 10;
-        }
+        // if (score > 0.6)
+        // {
+        //     return 10;
+        // }
 
-        else
-        {
-            return 5;
-        }
+        // else
+        // {
+        //     return 5;
+        // }
     }
 
-    override public int GetFactorBonus(AI aiToCheck)
-    {
-        //if player is low health, give higher weight
-        if (playerHp < 20)
-        {
-            return 10;
-        }
+    // override public int GetFactorBonus(AI aiToCheck)
+    // {
+    //     //if player is low health, give higher weight
+    //     if (playerHp < 20)
+    //     {
+    //         return 10;
+    //     }
 
-        return 1;
-    }
+    //     return 1;
+    // }
 
-    override public int GetFactorMultiplier(AI aiToCheck)
-    {
-        //if AI health is low, set weight to 0
-        if (hp < 10)
-        {
-            return 0;
-        }
+    // override public int GetFactorMultiplier(AI aiToCheck)
+    // {
+    //     //if AI health is low, set weight to 0
+    //     if (hp < 10)
+    //     {
+    //         return 0;
+    //     }
 
-        return 1;
-    }
+    //     return 1;
+    // }
 }
 

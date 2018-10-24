@@ -11,34 +11,34 @@ public class AttackAction : BaseAction
 
         foreach (var factor in Factors)
         {
-            if (factor.GetFactorRank(aiToCheck) > rank)
+            int factorRank = factor.GetFactorRank(aiToCheck);
+            if( factor.abort ) return 0;
+
+            if (factorRank > rank)
             {
-                rank += factor.GetFactorRank(aiToCheck);
+                rank += factorRank;
             }
         }
 
         return rank;
     }
 
-    override public int GetWeight(AI aiToCheck)
-    {
-        //sum of bonuses * product of multipliers
-        var weight = 0;
+    // override public int GetWeight(AI aiToCheck)
+    // {
+    //     //sum of bonuses * product of multipliers
+    //     var weight = 0;
 
-        foreach (var factor in Factors)
-        {
-            weight += factor.GetFactorBonus(aiToCheck) * factor.GetFactorMultiplier(aiToCheck);
-        }
+    //     foreach (var factor in Factors)
+    //     {
+    //         weight += factor.GetFactorBonus(aiToCheck) * factor.GetFactorMultiplier(aiToCheck);
+    //     }
 
-        return weight;
-    }
+    //     return weight;
+    // }
 
     override public void Run(AI ai)
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-        PlayerManager playerManager = player.GetComponent<PlayerManager>();
-
-        playerManager.CurrentHP -= ai.Damage;
+        ai.aiManager.anim.SetTrigger( "attackTrigger" );
+        PlayerManager.Instance.CurrentHP -= ai.Damage;
     }
 }

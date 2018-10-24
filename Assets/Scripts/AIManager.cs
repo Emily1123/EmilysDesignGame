@@ -36,7 +36,7 @@ public class AIManager : MonoBehaviour
 
         var decisionRank = 0;
 
-        var decisionWeight = 0;
+        // var decisionWeight = 0;
 
         BaseAction decision = null;
 
@@ -44,13 +44,13 @@ public class AIManager : MonoBehaviour
         {
             var curActionRank = action.GetRank(ai);
 
-            var curActionWeight = action.GetWeight(ai);
+            // var curActionWeight = action.GetWeight(ai);
 
-            if (curActionRank >= decisionRank && curActionWeight > decisionWeight)
+            if (curActionRank >= decisionRank /* || curActionWeight > decisionWeight */)
             {
                 decisionRank = curActionRank;
 
-                decisionWeight = curActionWeight;
+                // decisionWeight = curActionWeight;
 
                 decision = action;
             }
@@ -62,5 +62,12 @@ public class AIManager : MonoBehaviour
     void Update()
     {
         transform.localPosition = new Vector3(target.localPosition.x, transform.localPosition.y, target.localPosition.z);
+        float relX = agent.destination.x - transform.position.x;
+        if( relX < 0f ) {
+            transform.right = Vector3.right;
+        }
+        else {
+            transform.right = -Vector3.right;
+        }
     }
 }

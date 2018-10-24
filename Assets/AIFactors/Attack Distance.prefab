@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4370541440249540}
   - component: {fileID: 114893217713465488}
   m_Layer: 0
-  m_Name: Distance
+  m_Name: Attack Distance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,3 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 029fe526d52e2354c9a82c3dd9ad5050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ai: {fileID: 0}
+  importance: 50
+  pursuitRange: 3

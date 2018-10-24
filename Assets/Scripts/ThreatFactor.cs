@@ -23,7 +23,7 @@ public class ThreatFactor : BaseFactor
         }
         else
         {
-            print("No AI found on MyObject for threat factor!");
+            // print("No AI found on MyObject for threat factor!");
         }
         
         //determine what percentage of AI’s current hit points will be taken away if the player hits for maximum damage
@@ -47,20 +47,20 @@ public class ThreatFactor : BaseFactor
         return 0;
     }
 
-    override public int GetFactorBonus(AI aiToCheck)
-    {
-        return 1;
-    }
+    // override public int GetFactorBonus(AI aiToCheck)
+    // {
+    //     return 1;
+    // }
 
-    override public int GetFactorMultiplier(AI aiToCheck)
-    {
-        //if AI health is low, give higher weight
-        if (hp < 10)
-        {
-            return 2;
-        }
+    // override public int GetFactorMultiplier(AI aiToCheck)
+    // {
+    //     //if AI health is low, give higher weight
+    //     if (hp < 10)
+    //     {
+    //         return 2;
+    //     }
 
-        return 1;
-    }
+    //     return 1;
+    // }
 }
 

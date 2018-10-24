@@ -41,20 +41,20 @@ public class BaseAction : MonoBehaviour
         return _rank;
     }
 
-    virtual public int GetWeight(AI aiToCheck)
-    {
-        //sum of bonuses * product of multipliers
-        _weightBonus = 0;
+    // virtual public int GetWeight(AI aiToCheck)
+    // {
+    //     //sum of bonuses * product of multipliers
+    //     _weightBonus = 0;
 
-        foreach (var factor in Factors)
-        {
-            _weightBonus += factor.GetFactorBonus(aiToCheck) * factor.GetFactorMultiplier(aiToCheck);
-        }
+    //     foreach (var factor in Factors)
+    //     {
+    //         _weightBonus += factor.GetFactorBonus(aiToCheck) * factor.GetFactorMultiplier(aiToCheck);
+    //     }
 
-        Debug.Log("got final weight");
+    //     Debug.Log("got final weight");
 
-        return _weightBonus;
-    }
+    //     return _weightBonus;
+    // }
 
     virtual public void Run(AI ai) { }
 }

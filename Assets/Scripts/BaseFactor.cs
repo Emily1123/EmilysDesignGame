@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class BaseFactor : MonoBehaviour
 {
+
+    public bool abort { get; set; }
+
     virtual public int GetFactorRank(AI aiToCheck)
     {
         //default rank is 0
@@ -13,19 +16,19 @@ public class BaseFactor : MonoBehaviour
         return 0;
     }
 
-    virtual public int GetFactorBonus(AI aiToCheck)
-    {
-        //default bonus is 0
-        Debug.Log("got factor bonus");
+    // virtual public int GetFactorBonus(AI aiToCheck)
+    // {
+    //     //default bonus is 0
+    //     Debug.Log("got factor bonus");
 
-        return 0;
-    }
+    //     return 0;
+    // }
 
-    virtual public int GetFactorMultiplier(AI aiToCheck)
-    {
-        //default multiplier is 0
-        Debug.Log("got factor multiplier");
+    // virtual public int GetFactorMultiplier(AI aiToCheck)
+    // {
+    //     //default multiplier is 0
+    //     Debug.Log("got factor multiplier");
 
-        return 1;
-    }
+    //     return 1;
+    // }
 }
